@@ -10,9 +10,13 @@
     {{ negativeAnswer ? 'Да' : 'Нет' }}
   </div>
 </div>
-<InputsBlock @quantity="quantity = $event" @numbers="minNumber = $event" />
-<CheckBoxBlock @inp="negativeAnswer = $event" />
-
+<InputsBlock
+  @quantity="quantity = $event"
+  @numbers="minNumber = $event"
+/>
+<CheckBoxBlock
+  @inp="negativeAnswer = $event"
+/>
 </template>
 
 <script setup lang="ts">
