@@ -54,7 +54,7 @@ function Generate() {
 
     if (result < 0 && !negativeAnswer.value) { i--; continue; }
     if (result.includes('.') && result.split('.')[1] == '0') { result = result.split('.')[0]; }
-    answer.push(`${result}`);
+    answer.push(result);
 
     examples.push(`${numFirst} ${operator} ${numSecond}`);
     console.log(examples);
