@@ -1,17 +1,20 @@
 <template>
-  <div v-for="example, index in examples" class="answer-block">
-    <label>{{ example }} =
-    <input
-      :class="{
-        'answer-input': true,
-        'correct': valid[index] || false
-      }"
-      type="text"
-      @input="checkResult(index, ($event.target as HTMLInputElement)?.value)"
-      :key="index"
-    />
-  </label>
+  <div class="answer-block">
+    <div v-for="example, index in examples" class="answer-question">
+      <label>{{ example }} =
+      <input
+        :class="{
+          'answer-input': true,
+          'correct': valid[index] || false
+        }"
+        type="text"
+        @input="checkResult(index, ($event.target as HTMLInputElement)?.value)"
+        :key="index"
+      />
+    </label>
+    </div>    
   </div>
+
 </template>
 
 <script setup lang="ts">
@@ -38,6 +41,13 @@ label {
 }
 
 .answer-block {
+  display: grid;
+  grid-template: 1fr 1fr 1fr 1fr;
+  gap: 10px;
+  /* height: 100vh */
+}
+
+.answer-question {
   width: 100%;
   padding: 4px;
   border: 1px solid gray;
