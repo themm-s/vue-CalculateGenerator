@@ -1,18 +1,7 @@
 <template>
   <div v-if="answerComponent">
-    <div class="config">
-      Конфиг:
-      <div>
-        Кол-во примеров: {{ quantity }}
-        <br />
-        Максимальное кол-во цифр в примере: {{ maxNumber }}
-        <br />
-        Разрешить ответы с отрицательными числами:
-        {{ negativeAnswer ? 'Да' : 'Нет' }}
-        <br />
-        Режим: {{ mode === 'Adventure' ? 'Продвинутый' : 'Стандартный' }}
-      </div>
-    </div>
+    <Config :quantity=quantity :maxNumber=maxNumber :negativeAnswer=negativeAnswer mode=mode />
+    
     <InputsBlock @quantity="quantity = $event" @numbers="maxNumber = $event" />
     <CheckBoxBlock @inp="negativeAnswer = $event" />
     <Ratio @inp="mode = $event" />
@@ -26,6 +15,8 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import CheckBoxBlock from "./components/CheckBoxBlock.vue";
+import Config from "./components/Config.vue"
+
 import InputsBlock from "./components/InputsBlock.vue";
 import Ratio from "./ui/Ratio.vue";
 import TableOfAnswers from "./components/TableOfAnswers.vue";
