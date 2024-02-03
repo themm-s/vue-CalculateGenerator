@@ -22,7 +22,7 @@
 <Ratio
   @inp="mode = $event"
 />
-<button @click="generate">Сгенерировать</button>
+<button @click="Generate">Сгенерировать</button>
 </template>
 
 <script setup lang="ts">
@@ -36,20 +36,18 @@ const maxNumber = ref(1)
 const negativeAnswer = ref(false)
 const mode = ref('Default')
 
-function generate() {
+function Action() {
+
+}
+
+function Generate() {
+  const arr = []
   for (let i = 0; i < quantity.value; i++) {
     const numFirst = Math.floor(1 + Math.random() * 100)
     const numSecond = Math.floor(1 + Math.random() * 100)
-    const action = Math.random() * 10
-    if (action < 2.5) {
-      console.log(`${numFirst} + ${numSecond} = ${numFirst + numSecond}`)
-    } else if (action > 2.5 && action < 5) {
-      console.log(`${numFirst} - ${numSecond} = ${numFirst - numSecond}`)
-    } else if (action > 5 && action < 7.5) {
-      console.log(`${numFirst} * ${numSecond} = ${numFirst * numSecond}`)
-    } else {
-      console.log(`${numFirst} / ${numSecond} = ${numFirst / numSecond}`)
-    }
+    const operator = ['+', '-', '/', '*'][Math.floor(Math.random() * 4)]
+    arr.push(`${numFirst} ${operator} ${numSecond} = ${eval(numFirst + operator + numSecond)}`)
+    console.log(arr)
   }
 }
 

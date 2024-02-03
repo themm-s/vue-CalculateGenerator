@@ -1,7 +1,7 @@
 <template>
   <div class="block-radio">
     <label for="Default">
-    <input type="radio" name="radio" value="Default" id="Default" @change="$emit('inp', 'Default')" />
+    <input type="radio" checked name="radio" value="Default" id="Default" @change="$emit('inp', 'Default')" />
     Стандартный режим (+ -)
   </label>
   <label for="Adventure">
