@@ -42,8 +42,8 @@ label {
 
 .answer-block {
   display: grid;
-  grid-template: 1fr 1fr 1fr 1fr;
-  gap: 10px;
+  grid-template: repeat(3, 1fr) / repeat(2, 1fr) repeat(2, 1fr);
+  gap: 30px;
   /* height: 100vh */
 }
 

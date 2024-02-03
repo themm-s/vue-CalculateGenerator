@@ -1,6 +1,11 @@
 <template>
   <div v-if="answerComponent">
-    <Config :quantity=quantity :maxNumber=maxNumber :negativeAnswer=negativeAnswer mode=mode />
+    <Config
+      :quantity=quantity
+      :maxNumber=maxNumber
+      :negativeAnswer=negativeAnswer
+      :mode=mode
+    />
     
     <InputsBlock @quantity="quantity = $event" @numbers="maxNumber = $event" />
     <CheckBoxBlock @inp="negativeAnswer = $event" />
