@@ -6,7 +6,6 @@
       :negativeAnswer=negativeAnswer
       :mode=mode
     />
-    
     <InputsBlock @quantity="quantity = $event" @numbers="maxNumber = $event" />
     <CheckBoxBlock @inp="negativeAnswer = $event" />
     <Ratio @inp="mode = $event" />
@@ -36,6 +35,7 @@ const answer: string[] = [];
 
 function Generate() {
   examples.splice(0, examples.length);
+
   for (let i = 0; i < quantity.value; i++) {
     const numFirst = Math.floor(1 + Math.random() * 100);
     const numSecond = Math.floor(1 + Math.random() * 100);
@@ -47,7 +47,7 @@ function Generate() {
     }
 
     let result = eval(numFirst + operator + numSecond).toFixed(1);
-
+    
     if (result < 0 && !negativeAnswer.value) { i--; continue; }
     if (result.includes('.') && result.split('.')[1] == '0') { result = result.split('.')[0]; }
     answer.push(result);
