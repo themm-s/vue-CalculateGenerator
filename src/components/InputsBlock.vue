@@ -5,11 +5,6 @@
     :min="5"
     title="Кол-во примеров"
   />
-  <Inp 
-    @inp="$emit('numbers', $event)"
-    :min="1"
-    title="Минимальное кол-во цифр в примере"
-  />
 </div>
 </template>
 
