@@ -1,5 +1,8 @@
 <template>
-  <div class="answer-block">
+  <div class="timer" v-if="second > 0">
+      <h1>{{ second }}</h1>
+    </div>
+  <div v-else class="answer-block">
     <div v-for="example, index in examples" class="answer-question">
       <label>{{ example }} =
       <input
@@ -12,13 +15,16 @@
         :key="index"
       />
     </label>
-    </div>    
+    </div>
   </div>
-
+  <div v-if="second == 0">
+    <Timer :checkValid=answersCorrect />
+  </div>
 </template>
 
 <script setup lang="ts">
 import { computed, ref } from 'vue';
+import Timer from '../ui/Timer.vue';
 
 const props = defineProps<{
   examples: string[];
@@ -27,15 +33,33 @@ const props = defineProps<{
 
 const valid = ref<boolean[]>([])
 const answer = computed(() => props.answer)
+const second = ref(5)
+const answersCorrect = ref(false)
+
+setInterval(() => {
+  if(props.examples.length == valid.value.length && valid.value.every(x => x == true)) {
+    answersCorrect.value = true
+    console.log(answersCorrect.value)
+  }
+  if (second.value > 0)
+  second.value -= 1
+}, 1000)
 
 function checkResult(i: number, value?: string) {
   valid.value[i] = value == answer.value[i]
+  console.log(valid.value)
   return value == answer.value[i]
 }
 
 </script>
 
 <style>
+.timer {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+
 label {
   display:flex;
 }
