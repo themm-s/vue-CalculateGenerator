@@ -12,7 +12,7 @@
     <button @click="Generate">Сгенерировать</button>
   </div>
   <div v-else>
-    <TableOfAnswers :answer="answer" :examples="examples"/>
+    <TableOfAnswers :switch="switchComponent" :answer="answer" :examples="examples"/>
   </div>
 </template>
 
@@ -32,6 +32,10 @@ const answerComponent = ref(true);
 const mode = ref('Default');
 const examples: string[] = [];
 const answer: string[] = [];
+
+function switchComponent() {
+  answerComponent.value = !answerComponent.value;
+}
 
 function Generate() {
   examples.splice(0, examples.length);

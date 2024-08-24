@@ -19,6 +19,7 @@
   </div>
   <div v-if="second == 0">
     <Timer :checkValid=answersCorrect />
+    <button @click="props.switch()">Назад</button>
   </div>
 </template>
 
@@ -27,6 +28,7 @@ import { computed, ref } from 'vue';
 import Timer from '../ui/Timer.vue';
 
 const props = defineProps<{
+  switch: () => void;
   examples: string[];
   answer: string[];
 }>()
