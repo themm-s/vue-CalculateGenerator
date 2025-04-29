@@ -35,14 +35,18 @@ const props = defineProps<{
 
 const valid = ref<boolean[]>([])
 const answer = computed(() => props.answer)
-const second = ref(5)
+const second = ref(3)
 const answersCorrect = ref(false)
 
-setInterval(() => {
+const timer = setInterval(() => {
   if(props.examples.length == valid.value.length && valid.value.every(x => x == true)) {
     answersCorrect.value = true
     console.log(answersCorrect.value)
+    clearInterval(timer)
   }
+}, 10)
+
+setInterval(() => {
   if (second.value > 0)
   second.value -= 1
 }, 1000)
